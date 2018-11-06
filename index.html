@@ -1,15 +1,19 @@
-<!DOCTYPE <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>O</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <script>
+    d3.json ("water.json", function(data){
+        console.log(data);
+    })
+    </script>
 </head>
 <body>
+        
+    <canvas width="300" height="300" style="background-color:#CEF6E3;margin-left:300px;margin-right:300px;"></canvas>
     
 </body>
 </html>
