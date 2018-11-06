@@ -1,0 +1,985 @@
+{
+	"List":[
+	{
+		"Marque":"Cristalp",
+		"Nom":"naturelle",
+		"Groupe":"Nestlé",
+		"Gazeuse":"non",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Saxon",
+			"Pays":"CH",
+			"Lat":46.15,
+			"Long":7.1833
+		},
+		"Vente": [
+			{
+				"Batiment":"GEO",
+				"Type":"cafet",
+				"Prix":2.5
+			},
+			{
+				"Batiment":"GEO",
+				"Type":"machine",
+				"Prix":2.5
+			}
+		]
+	},
+	{
+		"Marque":"Cristalp",
+		"Nom":"pétillante",
+		"Groupe":"Nestlé",
+		"Gazeuse":"oui",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Saxon",
+			"Pays":"CH",
+			"Lat":46.15,
+			"Long":7.1833
+		},
+		"Vente": [
+			{
+				"Batiment":"GEO",
+				"Type":"cafet",
+				"Prix":2.5
+			},
+			{
+				"Batiment":"GEO",
+				"Type":"machine",
+				"Prix":2.5
+			}
+		]
+	},
+	{
+		"Marque":"Henniez",
+		"Nom":"verte",
+		"Groupe":"Nestlé",
+		"Gazeuse":"oui",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Henniez",
+			"Pays":"CH",
+			"Lat":46.7333,
+			"Long":6.8333
+		},
+		"Vente": [
+			{
+				"Batiment":"POL",
+				"Type":"kiosque",
+				"Prix":2.5
+			},
+			{
+				"Batiment":"MAX",
+				"Type":"cafet",
+				"Prix":99
+			},
+			{
+				"Batiment":"UTQ (brasserie)",
+				"Type":"cafet",
+				"Prix":2
+			},
+			{
+				"Batiment":"UTQ",
+				"Type":"cafet",
+				"Prix":2
+			},
+			{
+				"Batiment":"NEF",
+				"Type":"cafet",
+				"Prix":2.3
+			}
+		]
+	},
+	{
+		"Marque":"Henniez",
+		"Nom":"bleue",
+		"Groupe":"Nestlé",
+		"Gazeuse":"non",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Henniez",
+			"Pays":"CH",
+			"Lat":46.7333,
+			"Long":6.8333
+		},
+		"Vente": [
+			{
+				"Batiment":"MAX",
+				"Type":"cafet",
+				"Prix":99
+			},
+			{
+				"Batiment":"UTQ (brasserie)",
+				"Type":"cafet",
+				"Prix":2
+			},
+			{
+				"Batiment":"UTQ",
+				"Type":"cafet",
+				"Prix":2
+			},
+			{
+				"Batiment":"NEF",
+				"Type":"cafet",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"ANT",
+				"Type":"cafet",
+				"Prix":2
+			}
+		]
+	},
+	{
+		"Marque":"Henniez",
+		"Nom":"mango",
+		"Groupe":"Nestlé",
+		"Gazeuse":"non",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Henniez",
+			"Pays":"CH",
+			"Lat":46.7333,
+			"Long":6.8333
+		},
+		"Vente": [
+			{
+				"Batiment":"CSS",
+				"Type":"machine",
+				"Prix":2.1
+			},
+			{
+				"Batiment":"CSS",
+				"Type":"cafet",
+				"Prix":2.5
+			},
+			{
+				"Batiment":"SYN",
+				"Type":"machine",
+				"Prix":2.1
+			}
+		]
+	},
+	{
+		"Marque":"Henniez",
+		"Nom":"menthe-mélisse",
+		"Groupe":"Nestlé",
+		"Gazeuse":"non",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Henniez",
+			"Pays":"CH",
+			"Lat":46.7333,
+			"Long":6.8333
+		},
+		"Vente": [
+			{
+				"Batiment":"GEO",
+				"Type":"cafet",
+				"Prix":2.7
+			}
+		]
+	},
+	{
+		"Marque":"Henniez",
+		"Nom":"passion-kiwi",
+		"Groupe":"Nestlé",
+		"Gazeuse":"non",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Henniez",
+			"Pays":"CH",
+			"Lat":46.7333,
+			"Long":6.8333
+		},
+		"Vente": [
+			{
+				"Batiment":"GEO",
+				"Type":"cafet",
+				"Prix":2.7
+			},
+			{
+				"Batiment":"GEO",
+				"Type":"machine",
+				"Prix":2.5
+			}
+		]
+	},
+	{
+		"Marque":"Henniez",
+		"Nom":"pomme-hibiscus",
+		"Groupe":"Nestlé",
+		"Gazeuse":"non",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Henniez",
+			"Pays":"CH",
+			"Lat":46.7333,
+			"Long":6.8333
+		},
+		"Vente": [
+			{
+				"Batiment":"GEO",
+				"Type":"machine",
+				"Prix":2.5
+			}
+		]
+	},
+	{
+		"Marque":"Evian",
+		"Nom":"evian",
+		"Groupe":"Danone",
+		"Gazeuse":"non",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Evian-les-Bains",
+			"Pays":"F",
+			"Lat":46.4011,
+			"Long":6.5879
+		},
+		"Vente": [
+			{
+				"Batiment":"IDHEAP",
+				"Type":"machine",
+				"Prix":2.5
+			},
+			{
+				"Batiment":"POL",
+				"Type":"kiosque",
+				"Prix":2.5
+			},
+			{
+				"Batiment":"UTQ (Brasserie)",
+				"Type":"cafet",
+				"Prix":2
+			},
+			{
+				"Batiment":"UTQ",
+				"Type":"cafet",
+				"Prix":2
+			},
+			{
+				"Batiment":"CSS",
+				"Type":"machine",
+				"Prix":1.9
+			},
+			{
+				"Batiment":"ANT",
+				"Type":"cafet",
+				"Prix":2
+			}
+		]
+	},
+	{
+		"Marque":"Selecta",
+		"Nom":"",
+		"Groupe":"KKR",
+		"Gazeuse":"non",
+		"Volume":99,
+		"Emballage":"gobelet plastique",
+		"Origine": {
+			"Source":"",
+			"Pays":"CH",
+			"Lat":0,
+			"Long":0
+		},
+		"Vente": [
+			{
+				"Batiment":"IDHEAP",
+				"Type":"robinet selecta",
+				"Prix":0
+			},
+			{
+				"Batiment":"IDHEAP",
+				"Type":"robinet selecta",
+				"Prix":0
+			}
+		]
+	},
+	{
+		"Marque":"Robinet",
+		"Nom":"",
+		"Groupe":"",
+		"Gazeuse":"non",
+		"Volume":99,
+		"Emballage":"non",
+		"Origine": {
+			"Source":"",
+			"Pays":"CH",
+			"Lat":0,
+			"Long":0
+		},
+		"Vente": [
+			{
+				"Batiment":"IDHEAP",
+				"Type":"robinet",
+				"Prix":0
+			},
+			{
+				"Batiment":"BIO",
+				"Type":"robinet",
+				"Prix":0
+			}
+		]
+	},
+	{
+		"Marque":"Robinet",
+		"Nom":"",
+		"Groupe":"",
+		"Gazeuse":"non",
+		"Volume":99,
+		"Emballage":"verre",
+		"Origine": {
+			"Source":"",
+			"Pays":"CH",
+			"Lat":0,
+			"Long":0
+		},
+		"Vente": [
+			{
+				"Batiment":"MAX",
+				"Type":"robinet",
+				"Prix":0
+			},
+			{
+				"Batiment":"UTQ (brasserie)",
+				"Type":"robinet",
+				"Prix":0
+			},
+			{
+				"Batiment":"UTQ",
+				"Type":"robinet",
+				"Prix":0
+			},
+			{
+				"Batiment":"SYN",
+				"Type":"robinet",
+				"Prix":0
+			},
+			{
+				"Batiment":"NEF",
+				"Type":"robinet",
+				"Prix":0
+			},
+			{
+				"Batiment":"ANT",
+				"Type":"robinet (CAP)",
+				"Prix":0
+			},
+			{
+				"Batiment":"ANT",
+				"Type":"robinet (cafet)",
+				"Prix":0
+			}
+		]
+	},
+	{
+		"Marque":"valser",
+		"Nom":"classic",
+		"Groupe":"Coca-cola",
+		"Gazeuse":"oui",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Vals (GR)",
+			"Pays":"CH",
+			"Lat":46.6167,
+			"Long":9.1833
+		},
+		"Vente": [
+			{
+				"Batiment":"POL",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"MAX",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"MAX",
+				"Type":"cafet",
+				"Prix":99
+			},
+			{
+				"Batiment":"UTQ (brasserie)",
+				"Type":"cafet",
+				"Prix":2
+			},
+			{
+				"Batiment":"NEF",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"ANT (épi)",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"ANT",
+				"Type":"épicentre",
+				"Prix":2
+			},
+			{
+				"Batiment":"ANT",
+				"Type":"machine",
+				"Prix":2.3
+
+			}
+		]
+	},
+	{
+		"Marque":"valser",
+		"Nom":"plate",
+		"Groupe":"Coca-cola",
+		"Gazeuse":"non",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Vals (GR)",
+			"Pays":"CH",
+			"Lat":46.6167,
+			"Long":9.1833
+		},
+		"Vente": [
+			{
+				"Batiment":"POL",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"MAX",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"BIO",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"NEF",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"ANT (épi)",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"ANT",
+				"Type":"épicentre",
+				"Prix":2
+			},
+			{
+				"Batiment":"ANT",
+				"Type":"machine",
+				"Prix":2.3
+			}
+		]
+	},
+	{
+		"Marque":"valser",
+		"Nom":"Viva citron & herbes",
+		"Groupe":"Coca-cola",
+		"Gazeuse":"non",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Vals (GR)",
+			"Pays":"CH",
+			"Lat":46.6167,
+			"Long":9.1833
+		},
+		"Vente": [
+			{
+				"Batiment":"POL",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"POL",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"BIO",
+				"Type":"machine",
+				"Prix":2.3
+			}
+		]
+	},
+	{
+		"Marque":"Valser",
+		"Nom":"Viva mangue & goyave",
+		"Groupe":"Coca-cola",
+		"Gazeuse":"non",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Vals (GR)",
+			"Pays":"CH",
+			"Lat":46.6167,
+			"Long":9.1833
+		},
+		"Vente": [
+			{
+				"Batiment":"POL",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"NEF",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"ANT",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"GEO",
+				"Type":"cafet",
+				"Prix":2.7
+			}
+		]
+	},
+	{
+		"Marque":"Valser",
+		"Nom":"Viva rhubarbe & menthe",
+		"Groupe":"Coca-cola",
+		"Gazeuse":"non",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Vals (GR)",
+			"Pays":"CH",
+			"Lat":46.6167,
+			"Long":9.1833
+		},
+		"Vente": [
+			{
+				"Batiment":"POL",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"MAX",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"NEF",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"ANT",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"GEO",
+				"Type":"cafet",
+				"Prix":2.7
+			}
+		]
+	},
+	{
+		"Marque":"Valser",
+		"Nom":"Viva citron sans sucre",
+		"Groupe":"Coca-cola",
+		"Gazeuse":"non",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Vals (GR)",
+			"Pays":"CH",
+			"Lat":46.6167,
+			"Long":9.1833
+		},
+		"Vente": [
+			{
+				"Batiment":"MAX",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"UTQ (brasserie)",
+				"Type":"cafet",
+				"Prix":2.5
+			},
+			{
+				"Batiment":"UTQ",
+				"Type":"cafet",
+				"Prix":99
+			},
+			{
+				"Batiment":"SYN",
+				"Type":"machine",
+				"Prix":2.1
+			},
+			{
+				"Batiment":"NEF",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"ANT",
+				"Type":"machine",
+				"Prix":2.3
+			},
+			{
+				"Batiment":"GEO",
+				"Type":"cafet",
+				"Prix":2.7
+			}
+		]
+	},
+	{
+		"Marque":"Valser",
+		"Nom":"Viva poire & mélisse",
+		"Groupe":"Coca-cola",
+		"Gazeuse":"non",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Vals (GR)",
+			"Pays":"CH",
+			"Lat":46.6167,
+			"Long":9.1833
+		},
+		"Vente": [
+			{
+				"Batiment":"GEO",
+				"Type":"cafet",
+				"Prix":2.7
+			}
+		]
+	},
+	{
+		"Marque":"norda",
+		"Nom":"frizzante",
+		"Groupe":"Norda",
+		"Gazeuse":"oui",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Valsassina",
+			"Pays":"I",
+			"Lat":45.936,
+			"Long":9.482
+		},
+		"Vente": [
+			{
+				"Batiment":"MAX",
+				"Type":"machine",
+				"Prix":2
+			},
+			{
+				"Batiment":"ANT",
+				"Type":"machine",
+				"Prix":2
+			}
+		]
+	},
+	{
+		"Marque":"norda",
+		"Nom":"naturale",
+		"Groupe":"Norda",
+		"Gazeuse":"non",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Valsassina",
+			"Pays":"I",
+			"Lat":45.936,
+			"Long":9.482
+		},
+		"Vente": [
+			{
+				"Batiment":"MAX",
+				"Type":"machine",
+				"Prix":2
+			},
+			{
+				"Batiment":"ANT",
+				"Type":"machine",
+				"Prix":2
+			}
+		]
+	},
+	{
+		"Marque":"valser",
+		"Nom":"calcium+magnesium",
+		"Groupe":"Coca-cola",
+		"Gazeuse":"non",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Vals (GR)",
+			"Pays":"CH",
+			"Lat":46.6167,
+			"Long":9.1833
+		},
+		"Vente": [
+			{
+				"Batiment":"MAX",
+				"Type":"cafet",
+				"Prix":99
+			},
+			{
+				"Batiment":"UTQ (brasserie)",
+				"Type":"cafet",
+				"Prix":2
+			}
+		]
+	},
+	{
+		"Marque":"evian",
+		"Nom":"Sport",
+		"Groupe":"Danone",
+		"Gazeuse":"non",
+		"Volume":0.75,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Evian-les-Bains",
+			"Pays":"F",
+			"Lat":46.4011,
+			"Long":6.5879
+		},
+		"Vente": [
+			{
+				"Batiment":"MAX",
+				"Type":"cafet",
+				"Prix":99
+			},
+			{
+				"Batiment":"UTQ (brasserie)",
+				"Type":"cafet",
+				"Prix":2.5
+			},
+			{
+				"Batiment":"UTQ",
+				"Type":"cafet",
+				"Prix":2.5
+			},
+			{
+				"Batiment":"ANT",
+				"Type":"cafet",
+				"Prix":2.5
+			}
+		]
+	},
+	{
+		"Marque":"San Pellegrino",
+		"Nom":"San Pellegrino",
+		"Groupe":"Nestlé",
+		"Gazeuse":"oui",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"San Pellegrino Terme",
+			"Pays":"I",
+			"Lat":45.503,
+			"Long":9.403
+		},
+		"Vente": [
+			{
+				"Batiment":"MAX",
+				"Type":"cafet",
+				"Prix":99
+			},
+			{
+				"Batiment":"UTQ (brasserie)",
+				"Type":"cafet",
+				"Prix":2.5
+			},
+			{
+				"Batiment":"UTQ",
+				"Type":"cafet",
+				"Prix":2.5
+			},
+			{
+				"Batiment":"NEF",
+				"Type":"cafet",
+				"Prix":99
+			},
+			{
+				"Batiment":"ANT",
+				"Type":"cafet",
+				"Prix":2.5
+			}
+		]
+	},
+	{
+		"Marque":"Vittel",
+		"Nom":"Vittel",
+		"Groupe":"Nestlé",
+		"Gazeuse":"non",
+		"Volume":0.75,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Vittel",
+			"Pays":"F",
+			"Lat":48.2,
+			"Long":5.95
+		},
+		"Vente": [
+			{
+				"Batiment":"UTQ (brasserie)",
+				"Type":"cafet",
+				"Prix":2.5
+			},
+			{
+				"Batiment":"NEF",
+				"Type":"cafet",
+				"Prix":99
+			},
+			{
+				"Batiment":"ANT",
+				"Type":"cafet",
+				"Prix":99
+			}
+		]
+	},
+	{
+		"Marque":"san benedetto",
+		"Nom":"naturale",
+		"Groupe":"San Benedetto",
+		"Gazeuse":"non",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Scorzè",
+			"Pays":"I",
+			"Lat":45.5714,
+			"Long":12.108
+		},
+		"Vente": [
+			{
+				"Batiment":"SYN",
+				"Type":"machine",
+				"Prix":1.8
+			}
+		]
+	},
+	{
+		"Marque":"san benedetto",
+		"Nom":"frizzante",
+		"Groupe":"San Benedetto",
+		"Gazeuse":"oui",
+		"Volume":0.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Scorzè",
+			"Pays":"I",
+			"Lat":45.5714,
+			"Long":12.108
+		},
+		"Vente": [
+			{
+				"Batiment":"SYN",
+				"Type":"machine",
+				"Prix":1.8
+			}
+		]
+	},
+	{
+		"Marque":"cristallo",
+		"Nom":"legere",
+		"Groupe":"Mineralquelle Eptingen AG",
+		"Gazeuse":"oui",
+		"Volume":1.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Eptingen",
+			"Pays":"CH",
+			"Lat":47.3833,
+			"Long":7.8167
+		},
+		"Vente": [
+			{
+				"Batiment":"ANT",
+				"Type":"épicentre",
+				"Prix":3
+			}
+		]
+	},
+	{
+		"Marque":"fonte linda",
+		"Nom":"naturale",
+		"Groupe":"Tavina",
+		"Gazeuse":"non",
+		"Volume":1.5,
+		"Emballage":"PET",
+		"Origine": {
+			"Source":"Alto Garda",
+			"Pays":"I",
+			"Lat":45.8881,
+			"Long":10.8445
+		},
+		"Vente": [
+			{
+				"Batiment":"ANT",
+				"Type":"épicentre",
+				"Prix":2.5
+			}
+		]
+	},
+	{
+		"Marque":"henniez",
+		"Nom":"rouge",
+		"Groupe":"Nestlé",
+		"Gazeuse":"oui",
+		"Volume":0.3,
+		"Emballage":"verre",
+		"Origine": {
+			"Source":"Henniez",
+			"Pays":"CH",
+			"Lat":46.7333,
+			"Long":6.8333
+		},
+		"Vente": [
+			{
+				"Batiment":"GEO",
+				"Type":"zelig",
+				"Prix":1.5
+			}
+		]
+	},
+	{
+		"Marque":"henniez",
+		"Nom":"rouge",
+		"Groupe":"Nestlé",
+		"Gazeuse":"oui",
+		"Volume":0.5,
+		"Emballage":"verre",
+		"Origine": {
+			"Source":"Henniez",
+			"Pays":"CH",
+			"Lat":46.7333,
+			"Long":6.8333
+		},
+		"Vente": [
+			{
+				"Batiment":"GEO",
+				"Type":"zelig",
+				"Prix":2.5
+			}
+		]
+	}]
+}
