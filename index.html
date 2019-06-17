@@ -1,36 +1,529 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset='utf-8' />
     <title>O</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js"></script>
-    <style>
-        #main {
-            background-color: #EFFBFB;
-        }
-    </style>
- 
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='style.css' />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-url-parser/2.3.1/purl.min.js'></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css' />
+    <link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js'></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script>
+	 
+
+
+	</script>
 </head>
 <body>
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h3 class="modal-title" id="exampleModalLabel">About</h3>
+		  </div>
+		  <div class="modal-body">
+			<h4>Légende</h4>
+			<p class="readme_couleurs"></p>
+			<h4>Crédits</h4>
+			<p>📚 <em>Visualisation de données</em></br>
+			🗓 Printemps 2018</br>
+			 👨🏻‍🏫 Isaac Pante</p>
+			<p>👩🏻‍💻 Lucile Berset </br>
+			👨🏻‍💻 Jean Ceppi</p>
+		  </div>
+		</div>
+	  </div>
+	</div>
     <script>
 
-        let height = 800
-        let width = 800
+/*
+*	DÉCLARATION DES VARIABLES
+*/	
+		//Array contenant les marges extérieures
+		let margin = {top: 20, right: 20, bottom: 20, left: 20};
+		//Array contenant les marges intérieures
+		let padding = {top: 0, right:20, bot:35, left:20};
+		
+        //Hauteur pour les canevas
+        let hHisto = 500;
+        let height = hHisto - margin.left - margin.right;
+        let hBout = 400;
+        
+        //Largeur pour l'histogramme
+        let wSvgHisto = 900
+        
+        //Largeur pour le SVG d'affichage des bouteilles
+        let wSvgBout = wSvgHisto/2
+        let width = wSvgBout - margin.top - margin.bottom;
+		
+		//Espace réservé par barre de l'histogramme
+		let varbar = 60;
+		
+		//Message d'accueil
+		let messageItem = '← Faites votre choix';
+		let hGoutte = 100, wGoutte = 60;
+		
+		//Tableaux de correspondance pour les bâtiments (abréviations et couleurs) et les groupes industriels (couleurs)
+		let nomBat = {'ANT':'Anthropole','BIO':'Biophore','CSS':'Centre sportif','GEO':'Géopolis','IDHEAP':'IDHEAP','MAX':'Amphimax','NEF':'Internef','POL':'Amphipôle','SYN':'Synathlon','UTQ':'Unithèque','UTQ_B':'Unithèque (brasserie)'}
+		let coulHist = {'':'#a5d8ff', 'Coca-Cola':'#fe001a','Danone':'#364fc7', 'Mineralquelle Eptingen AG':'#b2f2bb', 'Nestlé':'lightgray', 'Norda (groupe)':'#40c057','San Benedetto (groupe)':'#ffc9c9', 'Tavina':'#ff6b6b','ANT':'#087f5b','BIO':'#9ebee2','CSS':'#96f2d7','GEO':'#5c7cfa','IDHEAP':'#22b8cf','MAX':'#b197fc','NEF':'#5d7dcc','POL':'#1f4916','SYN':'#1e3d72','UTQ':'#62eada','UTQ_B':'#d0ebff'}
+		
+		//Sous-titre "Groupes"
+		d3.select('.readme_couleurs')
+			.append('h5')
+			.html('Groupes') //Affiche le titre de la section des groupes industriels
+		
+		//Nom du premier bâtiment
+		firstBat = Object.keys(nomBat)[0];
+		
+		//Génère les pastilles de couleur pour les marques et les bâtiments
+		Object.keys(coulHist).forEach(key => {
+			let value = coulHist[key]; //Enregistre la valeur de la couleur
+			
+			if(key=='') {key='Robinet';}
+			
+			if(key == firstBat) {	//Lorsque le premier bâtiment de la liste est traité 
+				d3.select('.readme_couleurs')
+					.append('h5')
+					.html('Bâtiments')	//Affiche le titre de la section Bâtiments
+			}
+			
+			let nom = nomBat[key]?nomBat[key]:key; //Remplace l'abréviation des bâtiments par leur nom
+			
+			d3.select('.readme_couleurs')
+				.append('span')
+				.html('<span style="color:'+value+'">■</span> '+nom+'</br>') //Affiche la pastille de couleur et le nom du groupe industriel ou du bâtiment
+			
+		});
+		
+/*
+*	CONSTRUCTION DE LA PAGE
+*/
+			
+        //BOOTSRAP
+        //Container
+        let container = d3.select('body')
+			.append('div')
+				.classed('container', true)
+		//row
+		let row = container.append('div')
+			.classed('row', true)
+		//cols
+		let col1 = row.append('div')
+			.classed('col', true)
+		let col2 = row.append('div')
+			.classed('col', true)
+        
+        //Div pour l'histogramme
+        let divHisto = col1
+			.append('div')
+				.attr('id','divHisto')
+				.style('height',hHisto+'px')
+				.style('width',wSvgHisto+'px')
+			
+			//Div de titre
+			let titHisto = divHisto.append('div')
+				.attr('class', 'titHisto')
+			//Un texte pour savoir ce que l'on visualise
+			let h1Histo = titHisto.append('h1')
+				.attr('class', 'titreHisto')
+				.text('Eaux disponibles par bâtiment')
+			
+			let h2Histo = titHisto.append('h2')
+				.attr('class', 'sstitreHisto')
+				.text('Types de sources différentes disponibles')
+						
+			//SVG pour l'histogramme
+			let svgHistos = divHisto.append('svg')
+				.attr('id', 'graph') //attribue un ID
+			let svgHisto = svgHistos
+				.append('g') //ajoute un groupe (pour les étiquettes de l'axe)
+					.attr('id','zoneSvg')
+					.attr('transform','translate(' + margin.left+','+margin.top+')'); //déplace le groupe
+				
+			//Label de l'histogramme
+			let lblHisto = divHisto
+				.append('div')
+				.attr ('class', 'lblHisto')
+				.style('width',varbar/2 + 'px')
+			
+			//Bouton pour l'histogramme
+			let bouton = divHisto.append("button")
+				.classed("btn1", true)
+				.text('Par Groupes') // définit le texte sur le bouton à l'ouverture de la page
+				
+			//Bouton "about"
+			let btnReadme = divHisto.append('button')
+				.attr('class', 'btn2 btn-primary')
+				.attr('data-toggle', 'modal')
+				.attr('data-target', '#exampleModal')
+				.text('about')
+			
+		//Div pour les bouteilles
+		let divBout = col2
+			.append('div')
+			.attr('id','divBout')
+			
+			//Div pour le menu des bouteilles (gauche)
+			let divMenu = divBout.append('div')
+				.attr ('id', 'menu')
+				.attr ('class', 'menu')
+				.append('ul') //liste des entrées du menu
+					.attr('id','accordion')
+					.attr('class','accordion')
+					
+			//SVG pour les bouteilles
+			let svgBout = d3.select('#divBout')
+				.append('svg')
+				.attr('id','goutte')
+			
+			//Div pour les informations des bouteilles (droite)
+			let divInfos = divBout.append('div')
+				.attr ('id', 'infos')
+				//Balise img pour le logo de la marque de la bouteille
+				divInfos.append('img')
+					.attr('id','logoMarque')
+				//Balise de titre h2
+				divInfos.append('h2')
+					.html(messageItem)
+				//Div pour les informations des différentes bouteilles
+				let infosItems = divInfos.append('div')
+					.attr('id','infosItems')
+			
 
-        // création du canevas
+/*
+*	Traitement des données	
+*/
+        d3.json ('water.json', function(data){
 
-        let svg = d3.select("body")
-            .append("svg")
-            .attr("id", "main")
-            .attr("height", height)
-            .attr("width", width)
-
-        d3.json ("water.json", function(data){
-            console.log(data);
-        })
-
-
+			//Définition d'une constante Nombre d'Item Par Batiment
+			// clé : valeur [batiment:nombre d'item]
+			const nItemPBat = d3.nest()
+				.key(d=>d.batiment) //clé de regroupement par batiment
+				.sortKeys(d3.ascending) //tri croissant sur les clés (alphabétiquement)
+				.rollup(d=>d.length) //valeur de la donnée (ici le nombre d'item)
+				.entries(data) //données à utiliser
+				
+			//Définition d'une constante Nombre d'Item Par Groupe
+			// clé : valeur [groupe:nombre d'item]
+			const nItemPGroup = d3.nest()
+				.key(d=>d.groupe) //clé de regroupement par batiment
+				.sortKeys(d3.ascending) //tri croissant sur les clés (alphabétiquement)
+				.rollup(d=>d.length) //valeur de la donnée (ici le nombre d'item)
+				.entries(data) //données à utiliser
+			
+			//Enregistrement du jeu de données courant
+			let curData = nItemPBat
+			
+			//Premier affichage de l'histogramme
+			histogramme(curData)
+			
+			
+			//Action lors du clic sur le bouton
+			bouton.on('click',function(){
+				if(curData == nItemPBat){	//si le jeu de donnée est celui par bâtiment
+					curData = nItemPGroup	//définir le jeu de données par groupe
+					bouton.text('Par Bâtiments') // change le texte sur le bouton pour voir les bâtiments
+					h1Histo.text('Proportion d\'eau par groupe')
+					h2Histo.text('')
+				} else {					//dans l'autre cas
+					curData = nItemPBat		//définir le jeu de données par bâtiment
+					bouton.text('Par Groupes')	// change le texte sur le bouton pour voir les groupes
+					h1Histo.text('Eaux disponibles par bâtiment')
+					h2Histo.text('Types de sources différentes disponibles')
+				}
+				histogramme(curData)		//re-générer l'histogramme
+			})
+			
+			
+			//Fonction permettant de générer l'histogramme
+			function histogramme(in_data) {
+			
+				//Sélection du set de données pour l'histogramme
+				let dataHisto = in_data
+				
+				//Définition des extrema
+				let dhMin = d3.min(dataHisto.map(d=>d.value))
+				let dhMax = d3.max(dataHisto.map(d=>d.value))
+				
+				//Échelle de l'axe X
+				let x = d3.scalePoint() //échelle ordinale (non numérique, non linéaire)
+					.domain( //domaine = nombre de barres de l'histogramme
+						dataHisto.map(d=>dispGroupe(d.key)) //étiquettes des histogrammes (key = batiment)
+					) 
+					.range([varbar/4,(varbar/4)+(dataHisto.length-1)*varbar]) //alignement visuel
+				
+				//Axe des x
+				let xAxis = d3.axisBottom() //place l'axe en-dessous
+					.scale(x) //utilise l'échelle créée avant
+				
+				//Ajoute un groupe d'objets (pour l'axe)
+				svgHisto.append('g')
+					.attr('class', 'x-axis') //attribue une classe
+					.attr('transform', 'translate(0,' + (height-padding.bot) + ')') //le place en bas du canevas
+				
+				//Sélectionne les éléments de classe 'x-axis'
+				d3.select('.x-axis')   
+					.call(xAxis) //affiche l'axe des x
+					.selectAll('text') //sélectionne l'étiquette
+					.call(wrap, x.bandwidth());	//Applique la limitation de largeur
+				
+				//Fonction permettant de limiter la largeur des étiquettes d'un axe
+				function wrap(text, width) {
+				  //Parcours les textes
+				  text.each(function() {
+					var text = d3.select(this),
+						words = text.text().split(/\s+/).reverse(),	//Découpe le texte en mots
+						word,
+						line = [],
+						lineNumber = 0,
+						lineHeight = 1.1, // ems
+						y = text.attr("y"),
+						dy = parseFloat(text.attr("dy")),
+						tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+					while (word = words.pop()) {
+					  line.push(word);
+					  tspan.text(line.join(" "));
+					  if (tspan.node().getComputedTextLength() > width) {
+						line.pop();
+						tspan.text(line.join(" "));
+						line = [word];
+						tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+					  }
+					}
+				  });
+				}//wrap
+					
+				let maxItem = d3.max(dataHisto); //Nombre d'items
+					
+				let multH = Math.floor((hBout-(margin.top+(padding.bot*2)))/(dhMax))-1;	//Facteur de multiplication de la hauteur des barres
+				
+				let affHisto = svgHisto.selectAll('rect') //Sélectionne les rectangles
+				
+				let affHistoData = affHisto.data(dataHisto) //source des données
+				
+				affHistoData.enter().append('rect') //ajoute un rectangle
+					.merge(affHistoData)
+					.attr('x', (d, i)=> i*varbar)	//position horizontale: index * largeur de l'espace pour une barre
+					.attr('y', d=>height-padding.bot-d.value*multH)		// position verticale: hauteur du canevas - padding - (valeur de la donnée * multiplicateur)
+					.attr('width', varbar/2)	//largeur de la barre: largeur de l'espace pour une barre / 2
+					.attr('height',d=>d.value*multH)	//hauteur de la barre: valeur de la donnée * multiplicateur
+					.style('fill', d=>coulHist[d.key])	//colorie en bleu
+					.on('mouseover', function(d,i){		//lors du survol de la souris
+						let petit = Math.floor(divHisto.node().getBoundingClientRect()['x']);	//Distance horizontale au bord de la div
+						let grand = Math.floor(svgHisto.node().getBoundingClientRect()['x']);	//Distance horizontale au bord du svg
+						let diff = grand - petit;	//Distance horizontale pour l'alignement du label
+												
+						let posx = d3.select(this).attr("x")	//Récupère la position horizontale de la barre survolée
+						
+						posx = +posx + diff		//Définit la position horizontale du label
+						
+						d3.select(this)
+							.style('fill', '#1CE7F6')//Change la couleur de la barre survolée
+						lblHisto.transition()
+							.style('opacity', 1)	//Le label apparaît (devient opaque)
+						lblHisto.html(d.value)
+							.style('left', +posx + 'px')	//Positionne le label horizontalement
+							.style('top', height-padding.bot-d.value*multH + 'px')	//Positionne le label verticalement	
+					})
+					.on('mouseout', function(d,i){
+						d3.select(this)
+							.transition()
+							.duration(700)	//Durée de la transition en ms
+							.style('fill', d=>coulHist[d.key]);	//La barre reprend sa couleur d'origine
+						lblHisto.transition()
+							.style('opacity', 0)	//le label disparaît (devient transparent)
+					})
+				
+				affHistoData.exit().remove()
+				
+				//Fonction pour l'affichage du nom des groupes
+				function dispGroupe(in_groupe) {
+					rgex = /.+\(groupe\)/; //expression régulière pour détecter lorsque le nom du groupe industriel se termine par "(groupe)"
+					if(rgex.test(in_groupe)) {
+						in_groupe = in_groupe.substring(0, in_groupe.length-9); //si c'est le cas, supprime "(groupe)"
+					} else if(in_groupe==""){
+						in_groupe ="Robinet"; }	//si le groupe est absent, c'est un robinet
+					return in_groupe //retourne le prix mis en forme
+				}//dispGroupe			
+		
+				svgHisto.attr('transform','translate(' + (wSvgHisto-svgHistos.node().getBBox().width) / 2 +','+margin.top+')'); //déplace le groupe
+			
+			}//histogramme
+			
+			/*
+			*	TODO: remplacer les cercles par des gouttes
+			*/
+				
+				/* Dessine la goutte */
+				//let points = [ [30, 0], [0, 70], [30, 100], [60, 70], [30, 0] ];
+				
+						
+				/*svgBout.append('path')
+					.attr('d', pathString)
+					.attr('class','goutte')
+					.style('stroke','white')
+					.style('fill','blue')
+					.attr('transform','translate('+ ((wSvgBout/2)-(wGoutte/2)) +','+ ((hBout/2)-(hGoutte/2)) +') scale(1)')
+				*/
+		
+			const nBout = d3.nest()
+				.key(d=>d.marque)	//clé de regroupement par marque
+				.key(d=>d.item)		//clé de regroupement par item
+				.sortKeys(d3.ascending) //tri croissant sur les clés (alphabétiquement)
+				.entries(data) //données à utiliser
+			
+			
+			//Génère le menu
+			d3.select('#accordion').selectAll('li')
+				.data(nBout)	
+				.enter().append('li') //Ajoute une puce pour chaque marque
+					.html( d=>'<div>'+ d.key + '</div>' )	//Affiche une div avec le nom de la marque
+				.append('ul')	//Ajoute un sous-niveau
+				.selectAll('li')
+					.data(d=>d.values)
+				.enter().append('li')	//Ajoute une puce pour chaque item
+					.text(d=>d.key)		//Affiche le nom de l'item
+					.on('click', itemClick)	//Ajoute une fonction au clic
+					
+			//Fonction lors du clic sur un item
+			function itemClick(d, i) {
+				let marque = d.values[0].marque	//Enregistre la marque
+				let item = d.values[0].item		//Enregistre l'item
+				let vol = d.values[0].volume	//Enregistre le volume de la bouteille
+				let htmlItems = ''
+				if(vol > 10) {vol=10}	//Limite la taille du coefficient de volume
+				let lI = 60*vol;		//Calcule la largeur selon le coefficient de volume
+				let hI = 100*vol;		//Calcule la hauteur selon le coefficient de volume
+				let disp;
+				if(marque == item) {disp = marque} else {disp = marque + ' ' + item}	//Evite les doublons dans les noms
+				d3.select('#infos > h2').html(disp)		//Affiche le nom complet
+				d3.select('.goutte').attr('transform','translate('+ ((wSvgBout/2)-(lI/2)) +','+ ((hBout/2)-(hI/2)) +') scale('+ vol +')')	//Affiche la visualisation de l'item
+				
+				//Met en forme le nom de la marque, sans espaces et en minuscules
+				let shMarque = marque.replace(/\s/g, '').toLowerCase();
+				
+				//Affiche le logo de la marque correspondante
+				d3.select('#logoMarque').attr('src','img/'+shMarque+'.png')
+				
+				//Filtre les données à utiliser pour afficher les bouteilles, selon la marque et l'item
+				let dataBout = data.filter(function(d) { return d.marque == marque && d.item == item })
+				//Nombre de bouteilles
+				let boutCpt = dataBout.length;
+				
+				/* Variables pour l'affichage des bouteilles */
+				let col = boutCpt>2 ? 3 : boutCpt;	//nombre de colonnes (maximum 3)
+				let lin = Math.ceil(boutCpt/col); //nombre de lignes
+				let ecartX = wSvgBout/col; //écart horizontal entre 2 points
+				let startX = ecartX/3; //coordonnée X de départ
+				
+				switch(shMarque) {	//Forme de la visualisation selon la marque
+					default:	//par défaut: une bouteille
+						points = [[22,0],[53,0],[53,20],[50,20],[50,23],[75,55],[75,180],[0,180],[0,55],[25,23],[25,20],[22,20],[22,0]];
+						lineGenerator = d3.line().curve(d3.curveLinear);
+						break;
+					case 'robinet':	//si c'est un robinet: une goutte
+						points = [ [30, 0], [0, 70], [30, 100], [60, 70], [30, 0] ];
+						lineGenerator = d3.line().curve(d3.curveNatural);
+						break;
+				}//switch shMarque
+				
+				let pathString = lineGenerator(points); //génère la forme de la visualisation
+				
+				
+				/* Affichage des bouteilles */
+				let affBout = svgBout.selectAll('path') //sélection des formes
+				let affBoutData = affBout.data(dataBout) //sélection des données
+				
+				affBoutData.enter().append('path') //ajoute une forme par point de disponibilité
+					.merge(affBoutData) //la suite est mise à jour pour enter() et update
+					.attr('d', pathString)
+					.attr('class','bout') //ajoute une classe
+					.style('stroke','black')
+					.attr('transform',(d,i)=>'translate('+ (startX+(ecartX*(i%col))) +','+ (hBout/(lin+1))*(Math.floor(i/3)+1) +') scale('+(d.volume>3?0.5:d.volume)+')') //déplace et redimensionne la forme
+					
+					.attr('fill',d=>coulHist[d.batiment]) //couleur de la forme selon le bâtiment
+					.on('mouseover',function(d,i) { //au passage de la souris
+						d3.select('.bout_'+i) //sélectionne la div d'infos (à droite) correspondante
+							.style('background-color','rgba(255, 255, 255, 0.7)') //change la couleur de fond de la div
+					})
+					.on('mouseout',function(d,i) { //lorsque la souris n'est plus sur le cercle
+						d3.select('.bout_'+i)
+							.style('background','transparent') //
+					})
+				
+				affBoutData.exit().remove()	
+				
+				let arrayBout = infosItems
+					.selectAll('div')
+					.data(dataBout)
+				
+				arrayBout.exit().remove()
+				
+				//Enter = Ajouter les nouvelles données
+				let itemBout = arrayBout.enter().append('div')
+					.attr('class',(d,i)=>'bout_'+i)
+					.classed('unitBout','true')
+				itemBout.append('p').attr('class','bat').html(d=>nomBat[d.batiment])
+				itemBout.append('p').attr('class','prix').html(d=>complPrix(d.prix))
+				itemBout.append('p').attr('class','volEmb').html(d=>complVolEmb(d.volume,d.emballage))
+				
+				//Update = Données à mettre à jour
+				arrayBout.merge(arrayBout)
+					.select('.bat').html(d=>nomBat[d.batiment])
+				arrayBout.merge(arrayBout)
+					.select('.prix').html(d=>complPrix(d.prix))
+				arrayBout.merge(arrayBout)
+					.select('.volEmb').html(d=>complVolEmb(d.volume,d.emballage))
+				
+			
+				
+				//Fonction pour mettre en forme la donnée "prix"
+				function complPrix(in_prix) {
+					rgex = /.(\.)\d/; //expression régulière pour détecter un nombre à virgule
+					if(rgex.test(in_prix)) {
+						in_prix+='0' //si c'est un nombre à virgule, rajoute un 0 final
+					} else if(in_prix==99){
+						in_prix='n/a' //si c'est 99, alors indique "n/a"
+					} else {
+						in_prix+='.-' //si c'est un nombre entier, rajoute ".-"
+					}
+					return '💰 '+in_prix //retourne le prix mis en forme
+				}//complPrix
+				
+				//Fonction pour mettre en forme les données "volume" et "emballage"
+				function complVolEmb(in_vol, in_emb) {
+					if(in_vol==99) {	//Si le volume est de 99, c'est un robinet
+						if(in_emb != "") { //Si un emballage est défini
+							return ' ('+ in_emb +' à disposition)';	//indique l'emballage à disposition
+						}
+					} else { //si ce n'est pas un robinet
+						return ' ('+ in_vol +'l '+ in_emb +')';	//indique le volume et le type d'emballage
+					}
+				}//complVolEmb
+				
+			}//itemClick
+			
+			
+			//Fonction jQuery pour l'affichage en accordéon du menu
+			$( function() {
+				$( '#accordion' ).accordion({
+					collapsible: true,
+					heightStyle: 'content'
+				})//accordion
+				$( '#readme' ).accordion({
+					collapsible: true,
+					heightStyle: 'content',
+					active: false
+				})//accordion
+			})//function jQuery
+		})//d3.json
+		
     </script>
 </body>
 </html>

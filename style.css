@@ -1,0 +1,166 @@
+html {
+	height:100%;
+}
+body {
+	margin:0 !important;
+	background: #5eddff;
+	background-image: linear-gradient(90deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+}
+#divHisto {
+	position: relative;
+	border-radius: 10px;
+	border: thin black solid;
+	margin: 5px auto;
+}
+
+.titHisto {
+	position: absolute;
+	margin-top: 10px;
+	width: 100%;
+	text-align:center;
+}
+.titHisto > h2 {
+	font-size:24px;
+}
+#graph {
+	border-radius: 10px;
+	background-color: #EFFBFB;
+	height:100%;
+	width: 100%;
+}
+#graph > .x-axis {
+}
+
+.lblHisto {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	opacity: 0;
+}
+
+#divBout {
+	width: 900px;
+	background: #Cdf7f5;
+	border-radius: 10px;
+	border: thin black solid;
+	margin: auto;
+}
+#divBout > #infos {
+	position: relative;
+	width: 220px;
+	background: #Cdf7f5;
+	border-left: 1px blue dashed;
+	border-top-right-radius:10px;
+	text-align: center;
+	vertical-align: top;
+	display: inline-block;
+}
+#divBout > #infos > #reset_goutte {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	background: white;
+	padding: 1px;
+	font-size: 0.5em;
+	font-family: sans-serif;
+}
+#divBout > #infos > #logoMarque {
+	display: inline-block;
+	height: 50px;
+	margin: 5px 0 0 0;
+}
+#infos > h2 {
+	border-bottom: 1px blue dashed;
+	padding-bottom: 5px;
+	margin: 5px 0 0 0;
+}
+#infosItems {
+	cursor: default;
+}
+
+.bat, .prix, .volEmb {
+	font-family: sans-serif;
+	margin:0;
+}
+.bat {
+	font-weight: bold;
+	padding-top: 5px;
+}
+.prix {
+}
+.volEmb {
+	font-size: 0.8em;
+	border-bottom: 1px blue dashed;
+	padding-bottom: 5px;
+}
+#divBout > #menu {
+	position: relative;
+	width: 225px;
+	display:inline-block;
+}
+#divBout > #goutte {
+	position: relative;
+	height: 400px;
+	width: 450px;
+	vertical-align:top;
+}
+#goutte > .bout:hover {
+	cursor: help;
+}
+.btn1, .btn2 {
+	position: absolute;
+	height: auto;
+	padding: 6px 8px;
+	top: 10px;
+	border:none;
+	border-radius: 2px;
+	font-size: 0.8em;
+	cursor: pointer;
+	box-shadow: 0 0 4px #999;
+	outline: none;
+	background-position: center;
+	transition: background 0.8s;
+}
+.btn1 {
+	right: 10px;
+	text-transform: uppercase;
+	color: white;
+	background-color: #2196f3;
+}
+.btn2 {
+	left: 10px;
+	color: #333 !important;
+	background-color: #ccc !important;
+	font-family: monospace;
+}
+.btn1:hover {
+  background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%) center/15000%;
+}
+.btn1:active {
+  background-color: #6eb9f7;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+#exampleModal {
+	font-family: monospace;
+	text-align: justify;
+}
+
+.ui-accordion .ui-accordion-header {
+	margin: 1px 0 1px 1px !important;
+}
+
+.ui-accordion-content li {
+	cursor: pointer;
+}
+
+
+#accordion > li:first-child > div {
+	border-top-left-radius: 10px;
+}
+
+#accordion > li:last-child > div {
+	border-bottom-left-radius: 10px;
+}
